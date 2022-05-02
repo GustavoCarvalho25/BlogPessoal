@@ -14,7 +14,7 @@ namespace BlogPessoal.src.dtos
     /// <para>Data: 29/04/2022</para>
     /// </summary>
     public class NewUserDTO
-    {
+    {   
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
@@ -45,7 +45,11 @@ namespace BlogPessoal.src.dtos
     /// <para>Data: 29/04/2022</para>
     /// </summary>
     public class UpdateUserDTO
-    {
+    {   
+        [Required]
+        [StringLength(50)]
+        public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
@@ -53,6 +57,10 @@ namespace BlogPessoal.src.dtos
         [Required]
         [StringLength(30)]
         public string Password { get; set; }
+
+        [Required]
+        [StringLength(30)]
+        public string Email { get; set; }
 
         public string Image { get; set; }
 
