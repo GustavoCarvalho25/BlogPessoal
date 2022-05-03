@@ -32,7 +32,11 @@ namespace BlogPessoal.src.dtos
     /// <para>Data: 29/04/2022</para>
     /// </summary>
     public class UpdateThemeDTO
-    {
+    {   
+        [Required]
+        [StringLength(50)]
+        public int Id { get; }
+
         [Required]
         [StringLength(30)]
         public string Description { get; set; }
