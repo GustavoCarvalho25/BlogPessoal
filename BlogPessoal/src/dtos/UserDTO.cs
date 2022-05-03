@@ -48,7 +48,7 @@ namespace BlogPessoal.src.dtos
     {   
         [Required]
         [StringLength(50)]
-        public int Id { get; set; }
+        public int Id { get; }
 
         [Required]
         [StringLength(50)]
@@ -64,11 +64,12 @@ namespace BlogPessoal.src.dtos
 
         public string Image { get; set; }
 
-        public UpdateUserDTO(string name, string password, string image)
+        public UpdateUserDTO(string name, string password, string image, string email)
         {
             Name = name;
             Password = password;
             Image = image;
+            Email = email;
         }
     }
 
