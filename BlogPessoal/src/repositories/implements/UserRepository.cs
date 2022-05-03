@@ -9,7 +9,13 @@ using BlogPessoal.src.models;
 using BlogPessoal.src.repositories.implementations;
 
 namespace BlogPessoal.src.repositories.implements
-{
+{   
+    /// <summary>
+    /// <para>Resumo: Responsavel por implementar as os metodos da interface User </para>
+    /// <para>Criado por: Gustavo Carvalho</para>
+    /// <para>Versão: 1.0</para>
+    /// <para>Data: 02/05/2022</para>
+    /// </summary> 
     public class UserRepository : IUser
     {   
         #region Attributes
