@@ -10,6 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using BlogPessoal.src.data;
 using Microsoft.EntityFrameworkCore;
+using BlogPessoal.src.repositories;
+using BlogPessoal.src.repositories.implements;
+
 
 namespace BlogPessoal
 {
@@ -19,15 +22,23 @@ namespace BlogPessoal
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {   
-            // Configuração banco de dados
+            // Context
             IConfigurationRoot config = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory) 
                 .AddJsonFile("appsettings.json")
                 .Build();
             services.AddDbContext<PersonalBlogContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
 
-            // Configuração Controladores
+            // Repositories
+            services.AddScoped<IUser, UserRepository>();
+            services.AddScoped<ITheme, ThemeRepository>();
+            services.AddScoped<IPost, PostRepository>();
+
+            // Controllers
             services.AddControllers();
+            services.AddCors();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +51,11 @@ namespace BlogPessoal
             }
 
             app.UseRouting();
+
+            app.UseCors(c => c
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
 
             app.UseAuthorization();
 
