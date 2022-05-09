@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using BlogPessoal.src.dtos;
 using BlogPessoal.src.models;
 
-namespace BlogPessoal.src.repositories.implementations
+namespace BlogPessoal.src.repositories
 {   
     /// <summary>
     /// <para>Resumo: Responsavel por representar ações CRUD de theme</para>
@@ -19,6 +19,7 @@ namespace BlogPessoal.src.repositories.implementations
         void UpdateTheme(UpdateThemeDTO theme);
         void DeleteTheme(int id);
         ThemeModel GetThemeById(int id);
+        List<ThemeModel> GetAllThemes();
         List<ThemeModel> GetThemeByDescription(string description);
     }
 }

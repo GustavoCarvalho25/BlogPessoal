@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogPessoal.src.models;
 
 namespace BlogPessoal.src.dtos
 {
@@ -47,7 +48,10 @@ namespace BlogPessoal.src.dtos
     /// <para>Data: 29/04/2022</para>
     /// </summary>
     public class UpdatePostDTO
-    {
+    {   
+        [Required]
+        public int Id { get; set; }
+
         [Required]  // not null
         [StringLength(30)] // limitacao de tamanho
         public string Title { get; set; }
@@ -61,8 +65,9 @@ namespace BlogPessoal.src.dtos
         [Required]
         public string DescriptionTheme { get; set; }
 
-        public UpdatePostDTO(string title, string description, string image, string descriptionTheme)
-        {
+        public UpdatePostDTO(int id, string title, string description, string image, string descriptionTheme)
+        {   
+            Id = id;
             Title = title;
             Description = description;
             Image = image;

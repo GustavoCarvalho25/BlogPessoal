@@ -16,7 +16,7 @@ namespace BlogPessoal.src.models
 
         [Required]  // not null
         [StringLength(30)] // limitacao de tamanho
-        public string Titule { get; set; }
+        public string Title { get; set; }
 
         [Required]
         [StringLength(100)]

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using BlogPessoal.src.dtos;
 using BlogPessoal.src.models;
 
-namespace BlogPessoal.src.repositories.implementations
+namespace BlogPessoal.src.repositories
 {   
     /// <summary>
     /// <para>Resumo: Responsavel por representar ações de CRUD de user </para>

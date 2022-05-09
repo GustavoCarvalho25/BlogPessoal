@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BlogPessoal.src.data;
 using BlogPessoal.src.dtos;
 using BlogPessoal.src.models;
-using BlogPessoal.src.repositories.implementations;
+using BlogPessoal.src.repositories;
 
 namespace BlogPessoal.src.repositories.implements
 {   
@@ -39,17 +39,15 @@ namespace BlogPessoal.src.repositories.implements
                 Image = user.Image
             });
             _context.SaveChanges();
-
         }
 
         public void UpdateUser(UpdateUserDTO user)
         {
             var _user = GetUserById(user.Id);
             _user.Name = user.Name;
-            _user.Email = user.Email;
             _user.Password = user.Password;
             _user.Image = user.Image;
-            _context.Update(_user);
+            _context.Users.Update(_user);
             _context.SaveChanges();
         }
 

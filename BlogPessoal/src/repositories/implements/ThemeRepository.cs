@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using BlogPessoal.src.data;
 using BlogPessoal.src.dtos;
 using BlogPessoal.src.models;
-using BlogPessoal.src.repositories.implementations;
+using BlogPessoal.src.repositories;
 
 namespace BlogPessoal.src.repositories.implements
 {   
@@ -18,7 +18,7 @@ namespace BlogPessoal.src.repositories.implements
     public class ThemeRepository : ITheme
     {   
         #region Attributes
-        private PersonalBlogContext _context;
+        private readonly PersonalBlogContext _context;
         #endregion Attributes
 
         #region Constructors
@@ -61,6 +61,11 @@ namespace BlogPessoal.src.repositories.implements
         public ThemeModel GetThemeById(int id)
         {
             return _context.Themes.FirstOrDefault(t => t.Id == id);
+        }
+
+        public List<ThemeModel> GetAllThemes()
+        {
+            return _context.Themes.ToList();
         }
         #endregion Methods
     }
