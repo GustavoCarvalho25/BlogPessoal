@@ -21,7 +21,6 @@ E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Microsoft.IdentityMo
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Newtonsoft.Json.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
@@ -54,3 +53,11 @@ E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\obj\Debug\net5.0\BlogPessoal.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\obj\Debug\net5.0\ref\BlogPessoal.dll
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\obj\Debug\net5.0\BlogPessoal.pdb
 E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\obj\Debug\net5.0\BlogPessoal.genruntimeconfig.cache
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Microsoft.OpenApi.dll
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\obj\Debug\net5.0\BlogPessoal.MvcApplicationPartsAssemblyInfo.cs
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\bin\Debug\net5.0\BlogPessoal.xml
+E:\Projetos\DOTNET\BlogPessoal\BlogPessoal\obj\Debug\net5.0\BlogPessoal.xml

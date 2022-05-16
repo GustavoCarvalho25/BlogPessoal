@@ -13,13 +13,13 @@ namespace BlogPessoal.src.repositories
     /// <para>Versão: 1.0</para>
     /// <para>Data: 29/04/2022</para>
     /// </summary>
-    public interface IPost
+    public interface IPostRepository
     {
-        void NewPost(NewPostDTO post);
-        void UpdatePost(UpdatePostDTO post);
-        void DeletePost(int id);
-        PostModel GetPostById(int id);
-        List<PostModel> GetAllPosts();
-        List<PostModel> GetPostsBySearch (string title, string themeDescription, string creatorName);
+        Task NewPostAsync(NewPostDTO post);
+        Task UpdatePostAsync(UpdatePostDTO post);
+        Task DeletePostAsync(int id);
+        Task<PostModel> GetPostByIdAsync(int id);
+        Task<List<PostModel>> GetAllPostsAsync();
+        Task<List<PostModel>> GetPostsBySearchAsync (string title, string themeDescription, string creatorName);
     }
 }

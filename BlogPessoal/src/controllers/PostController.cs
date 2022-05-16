@@ -17,14 +17,14 @@ namespace BlogPessoal.src.controllers
     {
         #region Attibutes
 
-        private readonly IPost _repository;
+        private readonly IPostRepository _repository;
 
         #endregion
         
         
         #region Constructors
         
-        public PostController(IPost repository)
+        public PostController(IPostRepository repository)
         {
             _repository = repository;
         }
@@ -35,9 +35,9 @@ namespace BlogPessoal.src.controllers
         #region Métodos
 
         [HttpGet("id/{idPost}")]
-        public IActionResult GetPostById([FromRoute] int idPost)
+        public async Task<IActionResult> GetPostByIdAsync([FromRoute] int idPost)
         {
-            var post = _repository.GetPostById(idPost);
+            var post = await _repository.GetPostByIdAsync(idPost);
             
             if (post == null) return NotFound();
             
@@ -45,52 +45,52 @@ namespace BlogPessoal.src.controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllPosts()
+        public async Task<IActionResult> GetAllPostsAsync()
         {
-            var listPosts = _repository.GetAllPosts ();
+            var listPosts = await _repository.GetAllPostsAsync ();
 
-            if (listPosts.Count < 1) return NoContent();
+            if (listPosts.Count() < 1) return NoContent();
             
             return Ok(listPosts);
         }
 
         [HttpGet("search")]
-        public IActionResult GetPostsBySearch(
+        public async Task<IActionResult> GetPostsBySearchAsync(
             [FromQuery] string title,
             [FromQuery] string themeDescription,
             [FromQuery] string creatorName)
         {
-            var posts = _repository.GetPostsBySearch(title, themeDescription, creatorName);
+            var posts = await _repository.GetPostsBySearchAsync(title, themeDescription, creatorName);
             
-            if (posts.Count < 1) return NoContent();
+            if (posts.Count() < 1) return NoContent();
             
             return Ok(posts);
         }
 
         [HttpPost]
-        public IActionResult NewPost([FromBody] NewPostDTO post)
+        public async Task<IActionResult> NewPostAsync([FromBody] NewPostDTO post)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            _repository.NewPost(post);
+            await _repository.NewPostAsync(post);
             
             return Created($"api/Posts", post);
         }
 
         [HttpPut]
-        public IActionResult UpdatePost([FromBody] UpdatePostDTO post)
+        public async Task<IActionResult> UpdatePostAsync([FromBody] UpdatePostDTO post)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            _repository.UpdatePost(post);
+            await _repository.UpdatePostAsync(post);
             
             return Ok(post);
         }
 
         [HttpDelete("delete/{idPost}")]
-        public IActionResult DeletePost([FromRoute] int idPost)
+        public async Task<IActionResult> DeletePostAsync([FromRoute] int idPost)
         {
-            _repository.DeletePost(idPost);
+            await _repository.DeletePostAsync(idPost);
             return NoContent();
         }
         #endregion

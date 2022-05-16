@@ -18,14 +18,14 @@ namespace BlogPessoal.src.controllers
     {
         #region Attributes
 
-        private readonly ITheme _repository;
+        private readonly IThemeRepository _repository;
 
         #endregion 
 
 
         #region Constructors
 
-        public ThemeController(ITheme repository)
+        public ThemeController(IThemeRepository repository)
         {
             _repository = repository;
         }
@@ -36,19 +36,19 @@ namespace BlogPessoal.src.controllers
         #region Methods
 
         [HttpGet]
-        public IActionResult GetAllThemes()
+        public async Task<IActionResult> GetAllThemesAsync()
         {
-            var listThemes = _repository.GetAllThemes();
+            var listThemes = await _repository.GetAllThemesAsync();
 
-            if (listThemes.Count < 1) return NoContent();
+            if (listThemes.Count() < 1) return NoContent();
             
             return Ok(listThemes);
         }
 
         [HttpGet("id/{idTheme}")]
-        public IActionResult GetThemeById([FromRoute] int idTheme)
+        public async Task<IActionResult> GetThemeByIdAsync([FromRoute] int idTheme)
         {
-            var theme = _repository.GetThemeById(idTheme);
+            var theme = await _repository.GetThemeByIdAsync(idTheme);
 
             if (theme == null) return NotFound();
             
@@ -56,39 +56,39 @@ namespace BlogPessoal.src.controllers
         }
 
         [HttpGet("search")]
-        public IActionResult GetThemeByDescription([FromQuery] string themeDescription)
+        public async Task<IActionResult> GetThemeByDescriptionAsync([FromQuery] string themeDescription)
         {
-            var themes = _repository.GetThemeByDescription(themeDescription);
+            var themes = await _repository.GetThemeByDescriptionAsync(themeDescription);
 
-            if (themes.Count < 1) return NoContent();
+            if (themes.Count() < 1) return NoContent();
             
             return Ok(themes);
         }
 
         [HttpPost]
-        public IActionResult NewTheme([FromBody] NewThemeDTO theme)
+        public async Task<IActionResult> NewThemeAsync([FromBody] NewThemeDTO theme)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            _repository.NewTheme(theme);
+            await _repository.NewThemeAsync(theme);
             
             return Created($"api/Themes", theme);
         }
 
         [HttpPut]
-        public IActionResult UpdateTheme([FromBody] UpdateThemeDTO theme)
+        public async Task<IActionResult> UpdateThemeAsync([FromBody] UpdateThemeDTO theme)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            _repository.UpdateTheme(theme);
+            await _repository.UpdateThemeAsync(theme);
             
             return Ok(theme);
         }
 
         [HttpDelete("delete/{idTheme}")]
-        public IActionResult DeleteTheme([FromRoute] int idTheme)
+        public async Task<IActionResult> DeleteThemeAsync([FromRoute] int idTheme)
         {
-            _repository.DeleteTheme(idTheme);
+            await _repository.DeleteThemeAsync(idTheme);
             return NoContent();
         }
 

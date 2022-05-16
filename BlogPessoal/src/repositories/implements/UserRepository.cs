@@ -7,6 +7,7 @@ using BlogPessoal.src.data;
 using BlogPessoal.src.dtos;
 using BlogPessoal.src.models;
 using BlogPessoal.src.repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogPessoal.src.repositories.implements
 {   
@@ -16,7 +17,7 @@ namespace BlogPessoal.src.repositories.implements
     /// <para>Versão: 1.0</para>
     /// <para>Data: 02/05/2022</para>
     /// </summary> 
-    public class UserRepository : IUser
+    public class UserRepository : IUserRepository
     {   
         #region Attributes
         private readonly PersonalBlogContext _context;
@@ -30,48 +31,79 @@ namespace BlogPessoal.src.repositories.implements
         #endregion Constructors
 
         #region Methods
-        public void NewUser(NewUserDTO user)
+
+        /// <summary>
+        /// <para>Resumo: Metodo para criar um usuario</para>
+        /// </summary>
+        /// <param name="user">NewUserDTO</param>
+        public async Task NewUserAsync(NewUserDTO user)
         {
-            _context.Users.Add(new UserModel {
+            await _context.Users.AddAsync(new UserModel {
                 Email = user.Email,
                 Name = user.Name,
                 Password = user.Password,
-                Image = user.Image
+                Image = user.Image,
+                Role = user.Role
             });
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void UpdateUser(UpdateUserDTO user)
+        /// <summary>
+        /// <para>Resumo: Metodo para atualizar um usuario</para>
+        /// </summary>
+        /// <param name="user">UpdateUserDTO</param>
+        public async Task UpdateUserAsync(UpdateUserDTO user)
         {
-            var _user = GetUserById(user.Id);
+            var _user = await GetUserByIdAsync(user.Id);
             _user.Name = user.Name;
             _user.Password = user.Password;
             _user.Image = user.Image;
             _context.Users.Update(_user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void DeleteUser(int id)
+        /// <summary>
+        /// <para>Resumo: Metodo para deletar um usuario</para>
+        /// </summary>
+        /// <param name="id">int</param>
+        public async Task DeleteUserAsync(int id)
         {
-            _context.Users.Remove(GetUserById(id));
-            _context.SaveChanges();
+            _context.Users.Remove(await GetUserByIdAsync(id));
+            await _context.SaveChangesAsync();
         }
 
-        public UserModel GetUserById(int id)
+        /// <summary>
+        /// <para>Resumo: Metodo para obter um usuario pelo id</para>
+        /// </summary>
+        /// <param name="id">int</param>
+        /// <return>UserModel</return>
+        public async Task<UserModel> GetUserByIdAsync(int id)
         {
-            return _context.Users
-            .FirstOrDefault(u => u.Id == id);
+            return await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == id);
         }
-        public UserModel GetUserByEmail(string email)
+
+        /// <summary>
+        /// <para>Resumo: Metodo para obter um usuario pelo email</para>
+        /// </summary>
+        /// <param name="email">String</param>
+        /// <return>UserModel</return>
+        public async Task<UserModel> GetUserByEmailAsync(string email)
         {
-            return _context.Users
-            .FirstOrDefault(u => u.Email == email);
+            return await _context.Users
+            .FirstOrDefaultAsync(u => u.Email == email);
         }
-        public List<UserModel> GetUserByName(string name)
+
+        /// <summary>
+        /// <para>Resumo: Metodo para obter uma lista de usuarios pelo nome</para>
+        /// </summary>
+        /// <param name="name">String</param>
+        /// <returns>UserModel</returns>
+        public async Task<List<UserModel>> GetUserByNameAsync(string name)
         {
-            return _context.Users
+            return await _context.Users
             .Where(u => u.Name.Contains(name))
-            .ToList();
+            .ToListAsync();
         }
         #endregion Methods
     }

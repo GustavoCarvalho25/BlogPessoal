@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlogPessoal</name>
+    </assembly>
+    <members>
+        <member name="T:BlogPessoal.src.dtos.NewPostDTO">
+            <summary>
+            <para>Resumo: Classe espelho para criar um novo post</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.dtos.UpdatePostDTO">
+            <summary>
+            <para>Resumo: Classe espelho para alterar um post</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.dtos.NewThemeDTO">
+            <summary>
+            <para>Resumo: Classe espelho para criar um novo tema</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.dtos.UpdateThemeDTO">
+            <summary>
+            <para>Resumo: Classe espelho para alterar um tema</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.dtos.NewUserDTO">
+            <summary>
+            <para>Resumo: Classe espelho para criar um novo tema</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.dtos.UpdateUserDTO">
+            <summary>
+            <para>Resumo: Classe espelho para alterar um novo usuario</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.models.PostModel">
+            <summary>
+            <para>Resumo: Classe responsavel por representar tb_Post no banco</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 13/05/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.models.ThemeModel">
+            <summary>
+            <para>Resumo: Classe responsavel por representar tb_Model no banco</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 13/05/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.models.UserModel">
+            <summary>
+            <para>Resumo: Classe responsavel por representar tb_User no banco</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 13/05/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.repositories.implements.PostRepository">
+            <summary>
+            <para>Resumo: Responsavel por implementar as os metodos da interface Post</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 03/05/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.repositories.implements.ThemeRepository">
+            <summary>
+            <para>Resumo: Responsavel por implementar as os metodos da interface Theme </para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 03/05/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.repositories.implements.UserRepository">
+            <summary>
+            <para>Resumo: Responsavel por implementar as os metodos da interface User </para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 02/05/2022</para>
+            </summary> 
+        </member>
+        <member name="M:BlogPessoal.src.repositories.implements.UserRepository.NewUser(BlogPessoal.src.dtos.NewUserDTO)">
+            <summary>
+            <para>Resumo: Metodo para criar um usuario</para>
+            </summary>
+            <param name="user">NewUserDTO</param>
+        </member>
+        <member name="M:BlogPessoal.src.repositories.implements.UserRepository.UpdateUser(BlogPessoal.src.dtos.UpdateUserDTO)">
+            <summary>
+            <para>Resumo: Metodo para atualizar um usuario</para>
+            </summary>
+            <param name="user">UpdateUserDTO</param>
+        </member>
+        <member name="M:BlogPessoal.src.repositories.implements.UserRepository.DeleteUser(System.Int32)">
+            <summary>
+            <para>Resumo: Metodo para deletar um usuario</para>
+            </summary>
+            <param name="id">int</param>
+        </member>
+        <member name="M:BlogPessoal.src.repositories.implements.UserRepository.GetUserById(System.Int32)">
+            <summary>
+            <para>Resumo: Metodo para obter um usuario pelo id</para>
+            </summary>
+            <param name="id">int</param>
+            <return>UserModel</return>
+        </member>
+        <member name="M:BlogPessoal.src.repositories.implements.UserRepository.GetUserByEmail(System.String)">
+            <summary>
+            <para>Resumo: Metodo para obter um usuario pelo email</para>
+            </summary>
+            <param name="email">String</param>
+            <return>UserModel</return>
+        </member>
+        <member name="M:BlogPessoal.src.repositories.implements.UserRepository.GetUserByName(System.String)">
+            <summary>
+            <para>Resumo: Metodo para obter uma lista de usuarios pelo nome</para>
+            </summary>
+            <param name="name">String</param>
+            <returns>UserModel</returns>
+        </member>
+        <member name="T:BlogPessoal.src.repositories.IPostRepository">
+            <summary>
+            <para>Resumo: Responsavel por representar ações CRUD de post</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.repositories.IThemeRepository">
+            <summary>
+            <para>Resumo: Responsavel por representar ações CRUD de theme</para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.repositories.IUserRepository">
+            <summary>
+            <para>Resumo: Responsavel por representar ações de CRUD de user </para>
+            <para>Criado por: Gustavo Carvalho</para>
+            <para>Versão: 1.0</para>
+            <para>Data: 29/04/2022</para>
+            </summary>
+        </member>
+        <member name="T:BlogPessoal.src.services.IUserServices">
+            <summary>
+            <para>Resume: Interface responsavel pela interpretacao logica de servicos do usuario</para>
+            <para>Creado por: Gustavo Carvalho</para>
+            <para>Versao: 1.0</para>
+            <para>Data: 10/05/2022</para>
+            </summary>
+        </member>
+    </members>
+</doc>

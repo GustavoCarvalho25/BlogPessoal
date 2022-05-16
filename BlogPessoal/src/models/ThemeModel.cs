@@ -7,7 +7,13 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BlogPessoal.src.models
-{
+{   
+    /// <summary>
+    /// <para>Resumo: Classe responsavel por representar tb_Model no banco</para>
+    /// <para>Criado por: Gustavo Carvalho</para>
+    /// <para>Versão: 1.0</para>
+    /// <para>Data: 13/05/2022</para>
+    /// </summary>
     [Table("tb_Themes")]
     public class ThemeModel
     {

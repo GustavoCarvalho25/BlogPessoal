@@ -13,13 +13,13 @@ namespace BlogPessoal.src.repositories
     /// <para>Versão: 1.0</para>
     /// <para>Data: 29/04/2022</para>
     /// </summary>
-    public interface ITheme
+    public interface IThemeRepository
     {
-        void NewTheme(NewThemeDTO theme);
-        void UpdateTheme(UpdateThemeDTO theme);
-        void DeleteTheme(int id);
-        ThemeModel GetThemeById(int id);
-        List<ThemeModel> GetAllThemes();
-        List<ThemeModel> GetThemeByDescription(string description);
+        Task NewThemeAsync(NewThemeDTO theme);
+        Task UpdateThemeAsync(UpdateThemeDTO theme);
+        Task DeleteThemeAsync(int id);
+        Task <ThemeModel> GetThemeByIdAsync(int id);
+        Task <List<ThemeModel>> GetAllThemesAsync();
+        Task <List<ThemeModel>> GetThemeByDescriptionAsync(string description);
     }
 }

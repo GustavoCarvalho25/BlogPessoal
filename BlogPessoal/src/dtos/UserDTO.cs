@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogPessoal.src.utils;
 
 namespace BlogPessoal.src.dtos
 {
@@ -29,7 +30,9 @@ namespace BlogPessoal.src.dtos
 
         public string Image { get; set; }
 
-        public NewUserDTO(string name, string email, string password, string image)
+        public RoleType Role { get; set; }
+
+        public NewUserDTO(string name, string email, string password, string image, RoleType role)
         {
             Name = name;
             Email = email;
