@@ -30,6 +30,11 @@ namespace BlogPessoal.src.repositories.implements
         #endregion Constructors
 
         #region Methods
+
+        /// <summary>
+        /// <para>Resumo: Método responsavel por criar um novo tema</para>
+        /// </summary>
+        /// <param name="theme">NewThemeDTO</param>
         public async Task NewThemeAsync(NewThemeDTO theme)
         {
             await _context.Themes.AddAsync(new ThemeModel{
@@ -38,6 +43,10 @@ namespace BlogPessoal.src.repositories.implements
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por atualizar um tema</para>
+        /// </summary>
+        /// <param name="theme">UpdateThemeDTO</param>
         public async Task UpdateThemeAsync(UpdateThemeDTO theme)
         {
             var _theme = await GetThemeByIdAsync(theme.Id);
@@ -46,12 +55,21 @@ namespace BlogPessoal.src.repositories.implements
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por deletar um tema</para>
+        /// </summary>
+        /// <param name="id">int</param>
         public async Task DeleteThemeAsync(int id)
         {
             _context.Themes.Remove(await GetThemeByIdAsync(id));
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por retornar temas pela descrição</para>
+        /// </summary>
+        /// <param name="description">string</param>
+        /// <returns>Lista ThemeModel</returns>
         public async Task<List<ThemeModel>> GetThemeByDescriptionAsync(string description)
         {
             return await _context.Themes
@@ -59,11 +77,20 @@ namespace BlogPessoal.src.repositories.implements
             .ToListAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por retornar um tema pelo id</para>
+        /// </summary>
+        /// <param name="id">int</param>
+        /// <returns>Lista ThemeModel</returns>
         public async Task<ThemeModel> GetThemeByIdAsync(int id)
         {
             return await _context.Themes.FirstOrDefaultAsync(t => t.Id == id);
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por retornar todos os temas</para>
+        /// </summary>
+        /// <returns>Lista ThemeModel</returns>
         public async Task<List<ThemeModel>> GetAllThemesAsync()
         {
             return await _context.Themes.ToListAsync();

@@ -31,6 +31,11 @@ namespace BlogPessoal.src.repositories.implements
         #endregion Constructors
 
         #region Methods
+
+        /// <summary>
+        /// <para>Resumo: Método responsavel por criar um novo post</para>
+        /// </summary>
+        /// <param name="post">NewPostDTO</param>
         public async Task NewPostAsync(NewPostDTO post)
         {
             await _context.Posts.AddAsync(new PostModel
@@ -44,6 +49,10 @@ namespace BlogPessoal.src.repositories.implements
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por atualizar um post</para>
+        /// </summary>
+        /// <param name="post">UpdatePostDTO</param>
         public async Task UpdatePostAsync(UpdatePostDTO post)
         {
             var _post = await GetPostByIdAsync(post.Id);
@@ -55,22 +64,39 @@ namespace BlogPessoal.src.repositories.implements
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por deletar um post</para>
+        /// </summary>
+        /// <param name="id">int</param>
         public async Task DeletePostAsync(int id)
         {
             _context.Posts.Remove(await GetPostByIdAsync(id));
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por listar todos os posts</para>
+        /// </summary>
+        /// <returns>Lista ThemeModel</returns>
         public async Task<List<PostModel>> GetAllPostsAsync()
         {
             return await _context.Posts.ToListAsync();
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por retornar um post pelo id</para>
+        /// </summary>
+        /// <param name="id">int</param>
+        /// <returns>Lista ThemeModel</returns>
         public async Task<PostModel> GetPostByIdAsync(int id)
         {
             return await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
         }
-
+        
+        /// <summary>
+        /// <para>Resumo: Método responsavel por retornar uma lista de posts pela pesquisa</para>
+        /// </summary>
+        /// <returns>Lista ThemeModel</returns>
         public async Task<List<PostModel>> GetPostsBySearchAsync(string title, string themeDescription, string creatorName)
         {
             switch (title, themeDescription, creatorName)

@@ -9,7 +9,7 @@ using BlogPessoal.src.utils;
 namespace BlogPessoal.src.dtos
 {
     /// <summary>
-    /// <para>Resumo: Classe espelho para criar um novo tema</para>
+    /// <para>Resumo: Classe espelho para criar um novo usuario</para>
     /// <para>Criado por: Gustavo Carvalho</para>
     /// <para>Versão: 1.0</para>
     /// <para>Data: 29/04/2022</para>
@@ -42,7 +42,7 @@ namespace BlogPessoal.src.dtos
     }
 
     /// <summary>
-    /// <para>Resumo: Classe espelho para alterar um novo usuario</para>
+    /// <para>Resumo: Classe espelho para alterar um usuario</para>
     /// <para>Criado por: Gustavo Carvalho</para>
     /// <para>Versão: 1.0</para>
     /// <para>Data: 29/04/2022</para>

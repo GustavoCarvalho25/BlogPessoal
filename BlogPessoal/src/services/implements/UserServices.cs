@@ -15,7 +15,12 @@ namespace BlogPessoal.src.services.implements
 {
     public class UserServices : IUserServices
     {
-
+        /// <summary>
+        /// <para>Resumo: Classe responsevel por implementar IUserServices</para>
+        /// <para>Criado por: Gustavo Carvalho</para>
+        /// <para>Versão: 1.0</para>
+        /// <para>Data: 17/05/2022</para>
+        /// </summary>
         #region Attributes
 
         private readonly IUserRepository _userRepository;
@@ -34,6 +39,11 @@ namespace BlogPessoal.src.services.implements
         #endregion Constructors
 
         #region Methods
+
+        /// <summary>
+        /// <para>Resumo: Método responsavel por criar usuario sem duplicar</para>
+        /// </summary>
+        /// <param name="dto">NewUserDTO</param>
         public async Task CreateUserNotDuplicatedAsync(NewUserDTO dto)
         {
             var user = await _userRepository.GetUserByEmailAsync(dto.Email);
@@ -46,12 +56,21 @@ namespace BlogPessoal.src.services.implements
             await _userRepository.NewUserAsync(dto);
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por criptografar senha</para>
+        /// </summary>
+        /// <param name="password">string</param>
         public string EncryptPassword(string password)
         {
             var bytes = Encoding.UTF8.GetBytes(password);
             return Convert.ToBase64String(bytes);
         }
 
+        /// <summary>
+        /// <para>Resumo: Método responsavel por gerar token JWT</para>
+        /// </summary>
+        /// <param name="user">UserModel</param>
+        /// <returns>string</returns>
         // Gerar o token, poderia estar em outra classe.
         public string GenToken(UserModel user)
         {
@@ -77,6 +96,13 @@ namespace BlogPessoal.src.services.implements
             return tokenHandler.WriteToken(token);
         }
 
+
+        /// <summary>
+        /// <para>Resumo: Método responsavel por gerar autorização de usuario</para>
+        /// </summary>
+        /// <param name="login">UserLoginDTO</param>
+        /// <returns>AuthDTO</returns>
+        // Gerar o token, poderia estar em outra classe.
         public async Task<AuthDTO> GetAuthorizationAsync(UserLoginDTO login)
         {
             var user = await _userRepository.GetUserByEmailAsync(login.Email);

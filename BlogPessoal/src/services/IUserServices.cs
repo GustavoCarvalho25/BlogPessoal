@@ -8,7 +8,7 @@ using BlogPessoal.src.models;
 namespace BlogPessoal.src.services
 {   
     /// <summary>
-    /// <para>Resume: Interface responsavel pela interpretacao logica de servicos do usuario</para>
+    /// <para>Resume: Interface responsavel pela marcação dos métodos de servicos do usuario</para>
     /// <para>Creado por: Gustavo Carvalho</para>
     /// <para>Versao: 1.0</para>
     /// <para>Data: 10/05/2022</para>

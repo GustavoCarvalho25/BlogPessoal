@@ -37,11 +37,19 @@ namespace BlogPessoal
         public void ConfigureServices(IServiceCollection services)
         {
             // Context
-            IConfigurationRoot config = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-            services.AddDbContext<PersonalBlogContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+            if(Configuration["Enviroment:Start"] == "PROD")
+            {
+                services.AddEntityFrameworkNpgsql()
+                    .AddDbContext<PersonalBlogContext>(
+                        options => options.UseNpgsql(Configuration["ConnectionStringProd:DeaultConnection"])
+                    );
+            }
+            else
+            {
+                services.AddDbContext<PersonalBlogContext>(
+                    options => options.UseSqlServer(Configuration["ConnectionStringsDev:DefaultConnection"])
+                );
+            }
 
             // Repositories
             services.AddScoped<IUserRepository, UserRepository>();
@@ -117,7 +125,8 @@ namespace BlogPessoal
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PersonalBlogContext context)
-        {
+        {   
+            // Ambiente de desenvolvimento
             if (env.IsDevelopment())
             {
                 context.Database.EnsureCreated();
@@ -126,6 +135,16 @@ namespace BlogPessoal
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlogPessoal v1"));
 
             }
+
+            // Ambiente de produção
+            context.Database.EnsureCreated();
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlogPessoal v1");
+                c.RoutePrefix = string.Empty;
+            });
+
 
             app.UseRouting();
 

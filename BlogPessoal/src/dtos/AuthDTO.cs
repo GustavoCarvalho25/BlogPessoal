@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 using BlogPessoal.src.utils;
 
 namespace BlogPessoal.src.dtos
-{
+{   
+    /// <summary>
+    /// <para>Resumo: Classe espelho para autenticar um usuario</para>
+    /// <para>Criado por: Gustavo Carvalho</para>
+    /// <para>Versão: 1.0</para>
+    /// <para>Data: 13/05/2022</para>
+    /// </summary>
     public class UserLoginDTO
     {
-
         [Required]
         public string Email { get; set; }
 
@@ -23,6 +28,12 @@ namespace BlogPessoal.src.dtos
         }
     }
 
+    /// <summary>
+    /// <para>Resumo: Classe espelho para representar a autorização de um usuario</para>
+    /// <para>Criado por: Gustavo Carvalho</para>
+    /// <para>Versão: 1.0</para>
+    /// <para>Data: 13/05/2022</para>
+    /// </summary>
     public class AuthDTO
     {
         public int Id { get; set; }
